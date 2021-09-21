@@ -1,0 +1,50 @@
+<body>
+    <div><a class="home" href="/">Image Shop</a> |
+          {% if current_user.is_authenticated %}
+            <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a> |
+            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+          {% else %}
+            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a> |
+            <a class="nav-item nav-link" href="{{ url_for('signup') }}">Sign up</a>
+          {% endif %}
+    </div>
+</body>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}  
+      <div>
+        <table border = 1>
+            <thead>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Discounted Price</td>
+                <td>Stock</td>
+                <td></td>
+            </thead>
+            
+            {% for image in images %}
+                <tr>
+                <td><img src='{{image["src"]}}' width="300" height="200"/></td>
+                <td>{{image["name"]}}</td>
+                <td>{{image["price"]}}</td>
+                <td>{{image["discounted"]}}</td>
+                <td>{{image["stock"]}}</td>
+                <td><a href='/buy/{{image["id"]}}'>BUY</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+      </div>
+  </div>
+ </div>
+</main>
+      

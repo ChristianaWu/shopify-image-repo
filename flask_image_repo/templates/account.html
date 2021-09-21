@@ -1,0 +1,68 @@
+<body>
+    <div><a class="home" href="/">Image Shop</a> | 
+        <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a> |
+        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}  
+      <h1>{{ current_user.username }}</h1>
+      <h4>{{ current_user.email }}</h4>
+      <div>
+        <table border = 1>
+            <thead>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Price</td>
+                <td>Discounted Price</td>
+                <td>Stock</td>
+                <td></td>
+            </thead>
+            
+            {% for image in images %}
+                <tr>
+                <td><img src='{{image["src"]}}' width="300" height="200"/></td>
+                <td>{{image["name"]}}</td>
+                <td>{{image["price"]}}</td>
+                <td>{{image["discounted"]}}</td>
+                <td>{{image["stock"]}}</td>
+                <td><a href='/update/{{image["id"]}}'>UPDATE</button></td>
+                </tr>
+            {% endfor %}
+        </table>
+      </div>
+      <div>
+        <table border = 1>
+            <thead>
+                <td>Image Name</td>
+                <td>Price</td>
+                <td>Discounted Price</td>
+                <td>Stock</td>
+                <td></td>
+            </thead>
+            
+            {% for order in order_l %}
+                <tr>
+                <td>{{order["image_name"]}}</td>
+                <td>{{order["price"]}}</td>
+                <td>{{order["customer_name"]}}</td>
+                <td>{{order["customer_address"]}}</td>
+                <td>{{order["customer_email"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+      </div>
+  </div>
+ </div>
+</main>
+      
