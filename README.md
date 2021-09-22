@@ -12,5 +12,8 @@ As a seller you can login you your account, the credentials are email: admin@gma
 If you are a potential seller you can signup by going to the home page and signing up a new seller account.
 
 # Futrue Development
-If I were to continue with this project and add more features, I would add a way for sellers to upload their images. 
-I would also add more test cases to improve my application to make sure there would be no bugs, but as time permitted, I wanted to demonstrate my knowledge of unit testing.  
+If I were to continue with this project and add more features, I would add a way for sellers to upload their images. This would be a straightforward implementation that would POST an image and the data to he server. This would allow us o shave the image into the images folder and update the information in the table. Then another HTML form and a new form implement into the form.py. 
+
+Another feature would be to allow customer to create accounts. This would limit the number of time a customer had to input their information, and their information would be save to shorten the process of purchasing a image.
+
+
