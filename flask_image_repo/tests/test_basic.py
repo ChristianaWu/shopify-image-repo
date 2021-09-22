@@ -30,7 +30,7 @@ class BasicTests(unittest.TestCase):
     #### helper methods ####
     ########################
 
-    def signup(self, email, password):
+    def signup(self, username, email, password):
         return self.app.post(
             '/signup',
             data=dict(email=email, password=password),
@@ -59,6 +59,11 @@ class BasicTests(unittest.TestCase):
     def test_main_page(self):
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
+
+    def test_valid_user_singup(self):
+        self.register('bob','bob@gmail.com', 'bob')
+        self.assertEqual(response.status_code, 200)
+
  
 if __name__ == "__main__":
     unittest.main()
